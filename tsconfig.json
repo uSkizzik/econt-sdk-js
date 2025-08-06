@@ -1,0 +1,50 @@
+{
+	"compilerOptions": {
+		/* Basic Options */
+		"target": "ES2022", // default was: es5
+		"module": "ESNext",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"useDefineForClassFields": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"composite": true,
+		"incremental": true,
+		"declaration": true,
+
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"noEmit": true,
+		"allowJs": true,
+		"jsx": "preserve",
+		"forceConsistentCasingInFileNames": true,
+
+		/* Strict Type-Checking Options */
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": false,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"resolveJsonModule": true,
+		"strict": true,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+
+		"paths": {
+			"@/*": ["./*"]
+		}
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
+}

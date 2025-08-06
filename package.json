@@ -1,0 +1,23 @@
+{
+	"name": "econt-sdk-js",
+	"version": "0.1.0",
+	"description": "A JavaScript SDK that aids in using Econt's REST JSON API",
+	"author": "uSkizzik",
+	"license": "MIT",
+	"devDependencies": {
+		"@eslint/js": "^9.32.0",
+		"@types/node": "^20.0.0",
+		"eslint-plugin-import-x": "^4.16.1",
+		"eslint-plugin-prettier": "^5.5.3",
+		"eslint-plugin-unused-imports": "^4.1.4",
+		"node-html-parser": "^7.0.1",
+		"prettier": "^3.6.2",
+		"tsx": "^4.20.3",
+		"typescript": "^5.6.2",
+		"typescript-eslint": "^8.39.0",
+		"yalc": "^1.0.0-pre.53"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}
