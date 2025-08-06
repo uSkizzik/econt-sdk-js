@@ -1,339 +1,161 @@
-export enum dayexport {
-	WORKDAY = "workday",
-	HALFDAY = "halfday",
-	HOLIDAY = "holiday"
+import { Address, City, Country, Office, Quarter, Street, WorkingDateTime, WorkingTime } from "@/src/Nomenclatures"
+import { ShipmentType } from "@/src/Shipments"
+
+export type GetCountriesResponse = {
+	/**
+	 * Name of the country
+	 */
+	countries: Country[]
 }
 
-/**
- * Country. Required fields for valid country - ID or code (code2 or code3)
- */
-export type Country = {
-	id: number
+export type GetCitiesRequest = {
 	/**
-	 * ISO 3166-1 alpha-2 code (e.g. BG, GB, GR)
+	 * Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
 	 */
-	code2: string
-	/**
-	 * ISO 3166-1 alpha-3 code (e.g. BGR ,GBR, GRC)
-	 */
-	code3: string
-	/**
-	 * The bulgarian name of the country
-	 */
-	name: string
-	/**
-	 * The international name of the country
-	 */
-	nameEn: string
-	/**
-	 * True if country is a member of the EU
-	 */
-	isEU: boolean
+	countryCode: string
 }
 
-/**
- * Address. Required fields for valid address - city, street and street number (or quarter and other). Use respective fields or all joined together in the field &lt;fullAddress&gt;
- */
-export type Address = {
-	id: number
+export type GetCitiesResponse = {
 	/**
-	 * The city where the address is located
+	 * All cities in the requested country code(s)
 	 */
-	city: City
-	/**
-	 * The whole address
-	 */
-	fullAddress: string
-	/**
-	 * The whole address in English
-	 */
-	fullAddressEn: string
-	/**
-	 * Quarter name
-	 */
-	quarter: string
-	/**
-	 * Street name
-	 */
-	street: string
-	/**
-	 * Street number
-	 */
-	num: string
-	/**
-	 * Block number, entrance number, floor, apartment number and other additional information
-	 */
-	other: string
-	/**
-	 * Geo coordinates
-	 */
-	location: GeoLocation
-	/**
-	 * ZIP code
-	 */
-	zip: string
-	hezid: string
+	cities: City[]
 }
 
-/**
- * City served by Econt Express. Required fields for valid city - ID or name + post code (if the City is outside Bulgaria, country is required)
- */
-export type City = {
-	id: number
+export type GetOfficesRequest = {
 	/**
-	 * The country where the city is located
+	 * Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
 	 */
-	country: Country
+	countryCode: string
 	/**
-	 * Post code
+	 * ID of the city (optional)
 	 */
-	postCode: string
+	cityID: number
 	/**
-	 * Bulgarian name
+	 * Show cargo reception offices.
 	 */
-	name: string
+	showCargoReceptions: boolean
 	/**
-	 * International name
+	 * Show logistic center offices.
 	 */
-	nameEn: string
+	showLC: boolean
 	/**
-	 * Bulgarian name of the region
+	 * Show offices witch serving the city from reception.
 	 */
-	regionName: string
-	/**
-	 * International name of the region
-	 */
-	regionNameEn: string
-	/**
-	 * The phone prefix code for the city
-	 */
-	phoneCode: string
-	/**
-	 * Geo location
-	 */
-	location: GeoLocation
-	/**
-	 * Indicates if express city deliveries are available
-	 */
-	expressCityDeliveries: boolean
-	/**
-	 * Indicates if the city is serviced on Monday
-	 */
-	monday: boolean
-	/**
-	 * Indicates if the city is serviced on Tuesday
-	 */
-	tuesday: boolean
-	/**
-	 * Indicates if the city is serviced on Wednesday
-	 */
-	wednesday: boolean
-	/**
-	 * Indicates if the city is serviced on Thursday
-	 */
-	thursday: boolean
-	/**
-	 * Indicates if the city is serviced on Friday
-	 */
-	friday: boolean
-	/**
-	 * Indicates if the city is serviced on Saturday
-	 */
-	saturday: boolean
-	/**
-	 * Indicates if the city is serviced on Sunday
-	 */
-	sunday: boolean
-	/**
-	 * Number of days needed to deliver to this city.
-	 */
-	serviceDays: number
-	/**
-	 * Id of the zone in which the city is located.
-	 */
-	zoneId: number
-	/**
-	 * Name of the zone in which the city is located.
-	 */
-	zoneName: string
-	/**
-	 * International name of the zone in which the city is located.
-	 */
-	zoneNameEn: string
-	/**
-	 * Offices and types of shipments they serve
-	 */
-	servingOffices: ServingOfficeElement[]
+	servingReceptions: boolean
 }
 
-/**
- * Office of Econt Express. Required fields for identifying an office - code or ID
- */
-export type Office = {
-	id: number
+export type GetOfficesResponse = {
 	/**
-	 * A code identifying the office
+	 * Information about offices (name, address, working hours, coordinates, etc.)
 	 */
-	code: string
+	offices: Office[]
+}
+
+export type GetStreetsRequest = {
 	/**
-	 * True if the office is a mobile post station
+	 * ID of the city (optional)
 	 */
-	isMPS: boolean
+	cityID: number
+}
+
+export type GetStreetsResponse = {
 	/**
-	 * True if the office is an automatic post station
+	 * Street names
 	 */
-	isAPS: boolean
+	streets: Street[]
+}
+
+export type GetQuartersRequest = {
 	/**
-	 * The bulgarian name of the office
+	 * ID of the city (optional)
 	 */
-	name: string
+	cityID: number
+}
+
+export type GetQuartersResponse = {
 	/**
-	 * The international name of the office
+	 * Name of the quarter
 	 */
-	nameEn: string
+	quarters: Quarter[]
+}
+
+export type ValidateAddressRequest = {
 	/**
-	 * A list of phone numbers for the office
+	 * Address (minimum required parameters: city name, street name and street number or quarter and other)
 	 */
-	phones: string[]
+	address: Address
+}
+
+export type ValidateAddressResponse = {
 	/**
-	 * A list of email addresses for the office
-	 */
-	emails: string[]
-	/**
-	 * The address where the office is located
+	 * Address details (country, location, etc.)
 	 */
 	address: Address
 	/**
-	 * Additional information
+	 * Normal, processed, invalid
 	 */
-	info: string
-	/**
-	 * The currency the office works with
-	 */
-	currency: string
-	/**
-	 * The language the office works with
-	 */
-	language: string
-	/**
-	 * Business hours for parcel pickup and delivery from/to an address on weekdays
-	 */
-	normalBusinessHoursFrom: number
-	/**
-	 * Business hours for parcel pickup and delivery from/to an address on weekdays
-	 */
-	normalBusinessHoursTo: number
-	/**
-	 * Business hours for parcel pickup and delivery from/to an address on saturdays
-	 */
-	halfDayBusinessHoursFrom: number
-	/**
-	 * Business hours for parcel pickup and delivery from/to an address on saturdays
-	 */
-	halfDayBusinessHoursTo: number
-	/**
-	 * Types of shipments which can be sent/collected to/from the office
-	 */
-	shipmentTypes: any[]
-	/**
-	 * Partner code
-	 */
-	partnerCode: string
-	/**
-	 * Code of the distribution center associated with the office
-	 */
-	hubCode: string
-	/**
-	 * Name of the distribution center associated with the office
-	 */
-	hubName: string
-	/**
-	 * International name of the distribution center associated with the office
-	 */
-	hubNameEn: string
-	/**
-	 * True if the office is a Econt Drive
-	 */
-	isDrive: boolean
+	validationStatus: string
 }
 
-/**
- * Quarter of the city
- */
-export type Quarter = {
-	id: number
+export type AddressServiceTimesRequest = {
 	/**
-	 * ID of the city
+	 * ID of the city - check getCities method.
 	 */
-	cityID: number
+	city: number
 	/**
-	 * Bulgarian name of the quarter
+	 * Address to check for servicing
 	 */
-	name: string
+	address: string
 	/**
-	 * International name of the quarter
+	 * The date for which to check servicing
 	 */
-	nameEn: string
+	date: number
+	shipmentType: ShipmentType
 }
 
-/**
- * A geographic location
- */
-export type GeoLocation = {
+export type AddressServiceTimesResponse = {
+	serviceOffice: Office
 	/**
-	 * Geographic coordinate that specifies the north–south position of a point on the Earth's surface
+	 * Service office geo location latitude
 	 */
-	latitude: number
+	serviceOfficeLatitude: number
 	/**
-	 * Geographic coordinate that specifies the east-west position of a point on the Earth's surface
+	 * Service office geo location longitude
 	 */
-	longitude: number
+	serviceOfficeLongitude: number
 	/**
-	 * The expected accuracy of the location:
-0-none, there are either no coordinates or the coordinates do not represent the location;
-1-low;
-2-medium;
-3-high;
+	 * List of time spans available for working with clients
 	 */
-	confidence: number
+	serviceOfficeClientsWorkTimes: WorkingTime[]
+	/**
+	 * List of time spans available for courier request
+	 */
+	serviceOfficeCourierWorkTimes: WorkingTime[]
+	/**
+	 * Service time for the requested date
+	 */
+	serviceOfficeTime: WorkingDateTime
+	/**
+	 * List of working times for future dates.
+	 */
+	serviceOfficeNext30daysWorkTime: WorkingDateTime[]
 }
 
-/**
- * Street in the city
- */
-export type Street = {
-	id: number
+export type GetNearestOfficesRequest = {
 	/**
-	 * ID of the city
+	 * Аddress
 	 */
-	cityID: number
+	address: Address
 	/**
-	 * Bulgarian name of the street
+	 * Shipment type
 	 */
-	name: string
-	/**
-	 * International name of the street
-	 */
-	nameEn: string
+	shipmentType: ShipmentType
 }
 
-/**
- * Working hours span
- */
-export type WorkingTime = { start: string; end: string }
-
-/**
- * Working date and hours span
- */
-export type WorkingDateTime = { dayType: dayType; day: string; start: string; end: string }
-
-export type ServingOfficeElement = {
+export type GetNearestOfficesResponse = {
 	/**
-	 * Office code
+	 * List of offices
 	 */
-	officeCode: string
-	/**
-	 * The possible service types are as follows - from_door_courier ,to_door_courier, from_office_courier, to_office_courier, from_door_cargo, to_door_cargo, from_office_cargo, to_office_cargo, from_door_post, to_door_post, from_office_post, to_office_post, code1, from_door_cargo_expres, to_door_cargo_expres, from_office_cargo_expres, to_office_cargo_expres, to_door_trans_pallet, to_office_trans_pallet
-	 */
-	servingType: string
+	offices: Office[]
 }

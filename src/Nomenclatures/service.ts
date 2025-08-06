@@ -1,75 +1,75 @@
-import { AbstractService } from "@/src/core/core.ts"
-import { Address, Country, City, Office, Street, Quarter, WorkingTime, WorkingDateTime } from "@/src/Nomenclatures/types.ts"
+import { AbstractService } from "@/src/core"
+import { AddressServiceTimesRequest, AddressServiceTimesResponse, GetCitiesRequest, GetCitiesResponse, GetCountriesResponse, GetNearestOfficesRequest, GetNearestOfficesResponse, GetOfficesRequest, GetOfficesResponse, GetQuartersRequest, GetQuartersResponse, GetStreetsRequest, GetStreetsResponse, ValidateAddressRequest, ValidateAddressResponse } from "@/src/Nomenclatures"
 
-class NomenclaturesService extends AbstractService {
+export class NomenclaturesService extends AbstractService {
 	/**
 	 * All countries where Econt Express operates
+	 * @returns Response Body
 	 */
-	async getCountries(): Promise<{ countries: Country[] }> {
-		return this.http("/services/Nomenclatures/NomenclaturesService.getCountries.json", {}) as Promise<{ countries: Country[] }>
+	async getCountries(): Promise<GetCountriesResponse> {
+		return this.http("/services/Nomenclatures/NomenclaturesService.getCountries.json", {}) as Promise<GetCountriesResponse>
 	}
 
 	/**
 	 * Method for requesting the cities in a country
-	 * @param countryCode Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async getCities(countryCode: string): Promise<{ cities: City[] }> {
-		return this.http("/services/Nomenclatures/NomenclaturesService.getCities.json", { countryCode }) as Promise<{ cities: City[] }>
+	async getCities(req: GetCitiesRequest): Promise<GetCitiesResponse> {
+		return this.http("/services/Nomenclatures/NomenclaturesService.getCities.json", req) as Promise<GetCitiesResponse>
 	}
 
 	/**
 	 * All offices of Econt Express in a country
-	 * @param countryCode Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
-	 * @param cityID ID of the city (optional)
-	 * @param showCargoReceptions Show cargo reception offices.
-	 * @param showLC Show logistic center offices.
-	 * @param servingReceptions Show offices witch serving the city from reception.
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async getOffices(countryCode: string, cityID: number, showCargoReceptions: boolean, showLC: boolean, servingReceptions: boolean): Promise<{ offices: Office[] }> {
-		return this.http("/services/Nomenclatures/NomenclaturesService.getOffices.json", { countryCode, cityID, showCargoReceptions, showLC, servingReceptions }) as Promise<{ offices: Office[] }>
+	async getOffices(req: GetOfficesRequest): Promise<GetOfficesResponse> {
+		return this.http("/services/Nomenclatures/NomenclaturesService.getOffices.json", req) as Promise<GetOfficesResponse>
 	}
 
 	/**
 	 * Requests all streets in a city
-	 * @param cityID ID of the city (optional)
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async getStreets(cityID: number): Promise<{ streets: Street[] }> {
-		return this.http("/services/Nomenclatures/NomenclaturesService.getStreets.json", { cityID }) as Promise<{ streets: Street[] }>
+	async getStreets(req: GetStreetsRequest): Promise<GetStreetsResponse> {
+		return this.http("/services/Nomenclatures/NomenclaturesService.getStreets.json", req) as Promise<GetStreetsResponse>
 	}
 
 	/**
 	 * Request all quarters in a city
-	 * @param cityID ID of the city (optional)
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async getQuarters(cityID: number): Promise<{ quarters: Quarter[] }> {
-		return this.http("/services/Nomenclatures/NomenclaturesService.getQuarters.json", { cityID }) as Promise<{ quarters: Quarter[] }>
+	async getQuarters(req: GetQuartersRequest): Promise<GetQuartersResponse> {
+		return this.http("/services/Nomenclatures/NomenclaturesService.getQuarters.json", req) as Promise<GetQuartersResponse>
 	}
 
 	/**
 	 * Validates address based on input parameters
-	 * @param address Address (minimum required parameters: city name, street name and street number or quarter and other)
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async validateAddress(address: Address): Promise<{ address: Address; validationStatus: string }> {
-		return this.http("/services/Nomenclatures/AddressService.validateAddress.json", { address }) as Promise<{ address: Address; validationStatus: string }>
+	async validateAddress(req: ValidateAddressRequest): Promise<ValidateAddressResponse> {
+		return this.http("/services/Nomenclatures/AddressService.validateAddress.json", req) as Promise<ValidateAddressResponse>
 	}
 
 	/**
 	 * Geolocates an address and provides service times for that address.
-	 * @param city ID of the city - check getCities method.
-	 * @param address Address to check for servicing
-	 * @param date The date for which to check servicing
-	 * @param shipmentType
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async addressServiceTimes(city: number, address: string, date: number, shipmentType: any): Promise<{ serviceOffice: Office; serviceOfficeLatitude: number; serviceOfficeLongitude: number; serviceOfficeClientsWorkTimes: WorkingTime[]; serviceOfficeCourierWorkTimes: WorkingTime[]; serviceOfficeTime: WorkingDateTime; serviceOfficeNext30daysWorkTime: WorkingDateTime[] }> {
-		return this.http("/services/Nomenclatures/AddressService.addressServiceTimes.json", { city, address, date, shipmentType }) as Promise<{ serviceOffice: Office; serviceOfficeLatitude: number; serviceOfficeLongitude: number; serviceOfficeClientsWorkTimes: WorkingTime[]; serviceOfficeCourierWorkTimes: WorkingTime[]; serviceOfficeTime: WorkingDateTime; serviceOfficeNext30daysWorkTime: WorkingDateTime[] }>
+	async addressServiceTimes(req: AddressServiceTimesRequest): Promise<AddressServiceTimesResponse> {
+		return this.http("/services/Nomenclatures/AddressService.addressServiceTimes.json", req) as Promise<AddressServiceTimesResponse>
 	}
 
 	/**
 	 * Information service for offices near given address
-	 * @param address Аddress
-	 * @param shipmentType Shipment type
+	 * @param req Request Body
+	 * @returns Response Body
 	 */
-	async getNearestOffices(address: Address, shipmentType: any): Promise<{ offices: Office[] }> {
-		return this.http("/services/Nomenclatures/AddressService.getNearestOffices.json", { address, shipmentType }) as Promise<{ offices: Office[] }>
+	async getNearestOffices(req: GetNearestOfficesRequest): Promise<GetNearestOfficesResponse> {
+		return this.http("/services/Nomenclatures/AddressService.getNearestOffices.json", req) as Promise<GetNearestOfficesResponse>
 	}
 }

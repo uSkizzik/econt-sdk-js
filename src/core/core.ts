@@ -1,12 +1,12 @@
 export abstract class AbstractService {
-	static readonly devUrl: "http://demo.econt.com/ee"
-	static readonly apiUrl: "http://ee.econt.com"
+	static readonly devUrl = "http://demo.econt.com/ee"
+	static readonly apiUrl = "http://ee.econt.com"
 
-	isDev: boolean
-	user: string
-	password: string
+	readonly isDev: boolean
+	protected user: string
+	protected password: string
 
-	constructor(isDev, user, password) {
+	constructor(isDev: boolean, user?: string, password?: string) {
 		this.isDev = isDev
 
 		if (!isDev && !(user && password)) {
@@ -17,7 +17,7 @@ export abstract class AbstractService {
 		this.password = password ?? "1Asp-dev"
 	}
 
-	async http(endpoint: string, body: Record<string, any>): Promise<Record<string, any>> {
+	protected async http(endpoint: string, body: Record<string, any>): Promise<Record<string, any>> {
 		const apiUrl = this.isDev ? AbstractService.devUrl : AbstractService.apiUrl
 
 		return fetch(apiUrl + endpoint, {
@@ -26,6 +26,6 @@ export abstract class AbstractService {
 				Authorization: this.user + ":" + this.password
 			},
 			body: JSON.stringify(body)
-		})
+		}).then((response) => response.json())
 	}
 }

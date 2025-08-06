@@ -4,7 +4,7 @@ import path from "path"
 import * as prettier from "prettier"
 import { HTMLElement, parse } from "node-html-parser"
 
-let html = parse(fs.readFileSync(path.resolve("./scripts/temp/input.html"), "utf8"), {
+let html = parse(fs.readFileSync(path.join(__dirname, "temp", `input.html`), "utf8"), {
 	blockTextElements: {
 		script: false,
 		noscript: false,
@@ -14,10 +14,10 @@ let html = parse(fs.readFileSync(path.resolve("./scripts/temp/input.html"), "utf
 })
 
 let panels = html.querySelector("body > div > div > div.col-xs-12.col-sm-8")!.children
-let startIndex = panels.findIndex((p) => p.innerText === "Data types:")! + 1
+let startIndex = panels.findIndex((p) => p.innerText === "Data types.ts:")! + 1
 let endIndex = panels.findIndex((p) => p.innerText === "Services:")!
 
-let typeTables = panels.slice(startIndex, endIndex)
+let typeTables = startIndex > 0 ? panels.slice(startIndex, endIndex) : []
 
 type EnumType = {
 	name: string
@@ -48,8 +48,8 @@ let classes: ClassType[] = []
 for (const typeTable of typeTables) {
 	let heading = typeTable.querySelector(".panel-heading > .type-title")!.innerText
 
-	let name = heading.split(" ")[0]
-	let type = heading.split(" ")[1].replaceAll(/[()\n]/g, "") as "Class" | "Enumeration"
+	let name = heading.split(" ")[0]!
+	let type = heading.split(" ")[1]!.replaceAll(/[()\n]/g, "") as "Class" | "Enumeration"
 	let desc = typeTable.querySelector(".panel-heading > .note")!.innerText
 
 	if (type === "Class") parseClass(name, desc, typeTable)
