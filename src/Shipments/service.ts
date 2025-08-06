@@ -1,5 +1,5 @@
-import { AbstractService } from "@/src/core"
-import { CheckPossibleShipmentEditionsRequest, CheckPossibleShipmentEditionsResponse, CreateLabelRequest, CreateLabelResponse, CreateLabelsRequest, CreateLabelsResponse, DeleteLabelsRequest, DeleteLabelsResponse, GetMyAWBRequest, GetMyAWBResponse, GetRequestCourierStatusRequest, GetRequestCourierStatusResponse, GetShipmentStatusesRequest, GetShipmentStatusesResponse, GroupingCancelationRequest, GroupingCancelationResponse, GroupingRequest, GroupingResponse, RequestCourierRequest, RequestCourierResponse, SetITUCodeRequest, UpdateLabelRequest, UpdateLabelResponse, UpdateLabelsRequest, UpdateLabelsResponse } from "@/src/Shipments"
+import { AbstractService } from "@/core"
+import { CheckPossibleShipmentEditionsRequest, CheckPossibleShipmentEditionsResponse, CreateLabelRequest, CreateLabelResponse, CreateLabelsRequest, CreateLabelsResponse, DeleteLabelsRequest, DeleteLabelsResponse, GetMyAWBRequest, GetMyAWBResponse, GetRequestCourierStatusRequest, GetRequestCourierStatusResponse, GetShipmentStatusesRequest, GetShipmentStatusesResponse, GroupingCancelationRequest, GroupingCancelationResponse, GroupingRequest, GroupingResponse, RequestCourierRequest, RequestCourierResponse, SetITUCodeRequest, UpdateLabelRequest, UpdateLabelResponse, UpdateLabelsRequest, UpdateLabelsResponse } from "@/Shipments"
 
 export class ShipmentsService extends AbstractService {
 	/**

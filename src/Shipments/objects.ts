@@ -1,6 +1,6 @@
-import { Address } from "@/src/Nomenclatures/objects.ts"
-import { CDPayOptions, ClientProfile } from "@/src/Profile/objects.ts"
-import { HostedFile } from "@/src/core/types.ts"
+import { HostedFile } from "@/core"
+import { Address } from "@/Nomenclatures"
+import { CDPayOptions, ClientProfile } from "@/Profile"
 
 export enum ShipmentType {
 	/**

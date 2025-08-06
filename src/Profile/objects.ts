@@ -1,6 +1,6 @@
-import { Weekday } from "@/src/core"
-import { Address } from "@/src/Nomenclatures"
-import { Instruction } from "@/src/Shipments"
+import { Weekday } from "@/core"
+import { Address } from "@/Nomenclatures"
+import { Instruction } from "@/Shipments"
 
 /**
  * Information about the client profile (corporate or private)

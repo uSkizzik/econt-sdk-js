@@ -1,9 +1,9 @@
-import { AbstractService } from "@/src/core"
+import { AbstractService } from "@/core"
 
-import { NomenclaturesService } from "@/src/Nomenclatures"
-import { ProfileService } from "@/src/Profile"
-import { ShipmentsService } from "@/src/Shipments"
-import { ThreeWayLogisticsService } from "@/src/ThreeWayLogistics"
+import { NomenclaturesService } from "@/Nomenclatures"
+import { ProfileService } from "@/Profile"
+import { ShipmentsService } from "@/Shipments"
+import { ThreeWayLogisticsService } from "@/ThreeWayLogistics"
 
 export class EcontClient extends AbstractService {
 	readonly nomenclatures = new NomenclaturesService(this.isDev, this.user, this.password)

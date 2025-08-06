@@ -1,4 +1,4 @@
-import { ShipmentType } from "@/src/Shipments"
+import { ShipmentType } from "@/Shipments"
 
 export enum dayType {
 	WORKDAY = "workday",

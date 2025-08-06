@@ -1,5 +1,5 @@
-import { Address, City, Country, Office, Quarter, Street, WorkingDateTime, WorkingTime } from "@/src/Nomenclatures"
-import { ShipmentType } from "@/src/Shipments"
+import { Address, City, Country, Office, Quarter, Street, WorkingDateTime, WorkingTime } from "@/Nomenclatures"
+import { ShipmentType } from "@/Shipments"
 
 export type GetCountriesResponse = {
 	/**

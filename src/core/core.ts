@@ -20,12 +20,12 @@ export abstract class AbstractService {
 	protected async http(endpoint: string, body: Record<string, any>): Promise<Record<string, any>> {
 		const apiUrl = this.isDev ? AbstractService.devUrl : AbstractService.apiUrl
 
-		return fetch(apiUrl + endpoint, {
+		return (await fetch(apiUrl + endpoint, {
 			method: "POST",
 			headers: {
 				Authorization: this.user + ":" + this.password
 			},
 			body: JSON.stringify(body)
-		}).then((response) => response.json())
+		}).then((response) => response.json())) as Record<string, any>
 	}
 }

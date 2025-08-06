@@ -1,5 +1,5 @@
-import { AbstractService } from "@/src/core"
-import { ThreeWayLogisticsRequest } from "@/src/ThreeWayLogistics"
+import { AbstractService } from "@/core"
+import { ThreeWayLogisticsRequest } from "@/ThreeWayLogistics"
 
 export class ThreeWayLogisticsService extends AbstractService {
 	/**

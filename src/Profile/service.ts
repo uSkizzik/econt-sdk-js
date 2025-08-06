@@ -1,5 +1,5 @@
-import { AbstractService } from "@/src/core"
-import { CreateCDAgreementRequest, CreateCDAgreementResponse, GetClientProfilesResponse } from "@/src/Profile"
+import { AbstractService } from "@/core"
+import { CreateCDAgreementRequest, CreateCDAgreementResponse, GetClientProfilesResponse } from "@/Profile"
 
 export class ProfileService extends AbstractService {
 	/**

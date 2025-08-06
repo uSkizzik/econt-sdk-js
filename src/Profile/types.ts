@@ -1,4 +1,4 @@
-import { CDPayOptions, ProfilesResponseElement } from "@/src/Profile/objects.ts"
+import { CDPayOptions, ProfilesResponseElement } from "@/Profile/objects.ts"
 
 export type GetClientProfilesResponse = {
 	/**

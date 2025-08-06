@@ -1,5 +1,5 @@
-import { AbstractService } from "@/src/core"
-import { AddressServiceTimesRequest, AddressServiceTimesResponse, GetCitiesRequest, GetCitiesResponse, GetCountriesResponse, GetNearestOfficesRequest, GetNearestOfficesResponse, GetOfficesRequest, GetOfficesResponse, GetQuartersRequest, GetQuartersResponse, GetStreetsRequest, GetStreetsResponse, ValidateAddressRequest, ValidateAddressResponse } from "@/src/Nomenclatures"
+import { AbstractService } from "@//core"
+import { AddressServiceTimesRequest, AddressServiceTimesResponse, GetCitiesRequest, GetCitiesResponse, GetCountriesResponse, GetNearestOfficesRequest, GetNearestOfficesResponse, GetOfficesRequest, GetOfficesResponse, GetQuartersRequest, GetQuartersResponse, GetStreetsRequest, GetStreetsResponse, ValidateAddressRequest, ValidateAddressResponse } from "@//Nomenclatures"
 
 export class NomenclaturesService extends AbstractService {
 	/**

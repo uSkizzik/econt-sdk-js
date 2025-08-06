@@ -130,8 +130,8 @@ for (const method of methods) {
 	if (method.resultProps.length) generateObjType(method.name, "res", method.resultProps)
 }
 
-service.push('import { AbstractService } from "@/src/core"\n')
-service.push(`import { ${imports.join(", ")} } from "@/src/${serviceName}"\n\n`)
+service.push('import { AbstractService } from "@/core"\n')
+service.push(`import { ${imports.join(", ")} } from "@/${serviceName}"\n\n`)
 
 service.push(`export class ${serviceName}Service extends AbstractService {`)
 

@@ -1,6 +1,6 @@
-import { Address } from "@/src/Nomenclatures"
-import { CheckPossibleShipmentEditionsResultElement, CreateLabelResultElement, DeleteLabelsResultElement, GetMyAWBResultElement, PaymentAdditionPrice, PaymentInstruction, RequestCourierStatusResultElement, ShipmentStatus, ShipmentStatusResultElement, ShipmentType, ShippingLabel, UpdateLabelsResultElement } from "@/src/Shipments"
-import { ClientProfile } from "@/src/Profile"
+import { Address } from "@/Nomenclatures"
+import { CheckPossibleShipmentEditionsResultElement, CreateLabelResultElement, DeleteLabelsResultElement, GetMyAWBResultElement, PaymentAdditionPrice, PaymentInstruction, RequestCourierStatusResultElement, ShipmentStatus, ShipmentStatusResultElement, ShipmentType, ShippingLabel, UpdateLabelsResultElement } from "@/Shipments"
+import { ClientProfile } from "@/Profile"
 
 export type CreateLabelRequest = {
 	/**

@@ -913,6 +913,7 @@ __metadata:
     eslint-plugin-unused-imports: "npm:^4.1.4"
     node-html-parser: "npm:^7.0.1"
     prettier: "npm:^3.6.2"
+    tsc: "npm:^2.0.4"
     tsx: "npm:^4.20.3"
     typescript: "npm:^5.6.2"
     typescript-eslint: "npm:^8.39.0"
@@ -2114,6 +2115,15 @@ __metadata:
   peerDependencies:
     typescript: ">=4.8.4"
   checksum: 10c0/9806a38adea2db0f6aa217ccc6bc9c391ddba338a9fe3080676d0d50ed806d305bb90e8cef0276e793d28c8a929f400abb184ddd7ff83a416959c0f4d2ce754f
+  languageName: node
+  linkType: hard
+
+"tsc@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "tsc@npm:2.0.4"
+  bin:
+    tsc: bin/tsc
+  checksum: 10c0/4651d344891d995e62ab7ca64ce0a8597bbdc2d392886c9956d15caab4dc9bfe86e759d3385b3f97c49fb5294194a161d6812673e3f51e46357c82482f32c3ab
   languageName: node
   linkType: hard
 
