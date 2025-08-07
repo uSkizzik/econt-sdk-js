@@ -14,7 +14,7 @@ let html = parse(fs.readFileSync(path.join(__dirname, "temp", `input.html`), "ut
 })
 
 let panels = html.querySelector("body > div > div > div.col-xs-12.col-sm-8")!.children
-let startIndex = panels.findIndex((p) => p.innerText === "Data types.ts:")! + 1
+let startIndex = panels.findIndex((p) => p.innerText === "Data types:")! + 1
 let endIndex = panels.findIndex((p) => p.innerText === "Services:")!
 
 let typeTables = startIndex > 0 ? panels.slice(startIndex, endIndex) : []

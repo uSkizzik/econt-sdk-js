@@ -110,13 +110,18 @@ function generateObjType(methodName: string, type: "req" | "res", props: MethodP
 	string += `export type ${typeName} = {\n`
 
 	props.forEach((p) => {
+		let pType = p.type
+		if (!["string", "number", "boolean"].includes(pType) && type === "req") pType = `Partial<${p.type}>`
+
 		if (p.desc) {
 			string += `/**\n`
 			string += ` * ${p.desc}\n`
 			string += ` */\n`
 		}
 
-		string += `${p.key}: ${p.type},\n`
+		string += `${p.key}`
+		string += type === "req" ? "?" : ""
+		string += `: ${pType},\n`
 	})
 
 	string += "}\n\n"

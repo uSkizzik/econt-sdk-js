@@ -1,6 +1,6 @@
 {
 	"name": "econt-sdk-js",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A JavaScript SDK that aids in using Econt's REST JSON API",
 	"author": "uSkizzik",
 	"license": "MIT",
@@ -15,12 +15,16 @@
 		}
 	},
 	"scripts": {
+		"lint": "npx eslint .",
 		"build": "tsup src/index.ts --format esm,cjs --dts",
-		"prepublishOnly": "yarn build"
+		"prepublishOnly": "yarn build",
+		"generate:service": "npx tsx ./scripts/generate-service.ts",
+		"generate:all": "yarn generate:service Nomenclatures && yarn generate:service Profile && yarn generate:service Shipments && yarn generate:service ThreeWayLogistics"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
 		"@types/node": "^20.0.0",
+		"eslint": "^9.32.0",
 		"eslint-plugin-import-x": "^4.16.1",
 		"eslint-plugin-prettier": "^5.5.3",
 		"eslint-plugin-unused-imports": "^4.1.4",

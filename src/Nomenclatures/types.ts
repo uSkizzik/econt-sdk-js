@@ -12,7 +12,7 @@ export type GetCitiesRequest = {
 	/**
 	 * Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
 	 */
-	countryCode: string
+	countryCode?: string
 }
 
 export type GetCitiesResponse = {
@@ -26,23 +26,23 @@ export type GetOfficesRequest = {
 	/**
 	 * Three-letter ISO Alpha-3 code of the country (e.g. AUT, BGR, etc.)
 	 */
-	countryCode: string
+	countryCode?: string
 	/**
 	 * ID of the city (optional)
 	 */
-	cityID: number
+	cityID?: number
 	/**
 	 * Show cargo reception offices.
 	 */
-	showCargoReceptions: boolean
+	showCargoReceptions?: boolean
 	/**
 	 * Show logistic center offices.
 	 */
-	showLC: boolean
+	showLC?: boolean
 	/**
 	 * Show offices witch serving the city from reception.
 	 */
-	servingReceptions: boolean
+	servingReceptions?: boolean
 }
 
 export type GetOfficesResponse = {
@@ -56,7 +56,7 @@ export type GetStreetsRequest = {
 	/**
 	 * ID of the city (optional)
 	 */
-	cityID: number
+	cityID?: number
 }
 
 export type GetStreetsResponse = {
@@ -70,7 +70,7 @@ export type GetQuartersRequest = {
 	/**
 	 * ID of the city (optional)
 	 */
-	cityID: number
+	cityID?: number
 }
 
 export type GetQuartersResponse = {
@@ -84,7 +84,7 @@ export type ValidateAddressRequest = {
 	/**
 	 * Address (minimum required parameters: city name, street name and street number or quarter and other)
 	 */
-	address: Address
+	address?: Partial<Address>
 }
 
 export type ValidateAddressResponse = {
@@ -102,16 +102,16 @@ export type AddressServiceTimesRequest = {
 	/**
 	 * ID of the city - check getCities method.
 	 */
-	city: number
+	city?: number
 	/**
 	 * Address to check for servicing
 	 */
-	address: string
+	address?: string
 	/**
 	 * The date for which to check servicing
 	 */
-	date: number
-	shipmentType: ShipmentType
+	date?: number
+	shipmentType?: Partial<ShipmentType>
 }
 
 export type AddressServiceTimesResponse = {
@@ -146,11 +146,11 @@ export type GetNearestOfficesRequest = {
 	/**
 	 * Аddress
 	 */
-	address: Address
+	address?: Partial<Address>
 	/**
 	 * Shipment type
 	 */
-	shipmentType: ShipmentType
+	shipmentType?: Partial<ShipmentType>
 }
 
 export type GetNearestOfficesResponse = {

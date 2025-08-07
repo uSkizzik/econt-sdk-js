@@ -6,6 +6,8 @@ import { execSync } from "node:child_process"
 const serviceName = process.argv[2]!
 if (!serviceName) throw new Error("Service name required")
 
+console.log("Generating service ", serviceName)
+
 const htmlPath = path.join(__dirname, "temp", `input.html`)
 
 async function generateService() {
@@ -19,7 +21,7 @@ async function generateService() {
 	execSync("npx tsx " + methodScript)
 
 	const srcFolder = path.join(__dirname, "../", "src", serviceName)
-	fs.mkdirSync(srcFolder)
+	fs.mkdirSync(srcFolder, { recursive: true })
 
 	const indexTemplate = path.join(__dirname, "data", "index-template.txt")
 	fs.copyFileSync(indexTemplate, path.join(srcFolder, "index.ts"))

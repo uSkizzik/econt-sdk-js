@@ -36,21 +36,21 @@ export enum Weekday {
  * A file hosted on Econt's servers
  */
 export type HostedFile = {
-	id: number
+	id?: number
 	/**
 	 * The name of the hosted file
 	 */
-	filename: string
+	filename?: string
 	/**
 	 * File type (text, xml, application, x-msexcel)
 	 */
-	mimeType: string
+	mimeType?: string
 	/**
 	 * The URL address of the hosted file
 	 */
-	URL: string
+	URL?: string
 	/**
 	 * The content of the hosted file
 	 */
-	content: string
+	content?: string
 }

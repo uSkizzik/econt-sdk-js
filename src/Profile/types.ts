@@ -8,7 +8,7 @@ export type GetClientProfilesResponse = {
 }
 
 export type CreateCDAgreementRequest = {
-	cdPayOptions: CDPayOptions
+	cdPayOptions?: Partial<CDPayOptions>
 }
 
 export type CreateCDAgreementResponse = {

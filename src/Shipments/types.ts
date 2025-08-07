@@ -6,19 +6,19 @@ export type CreateLabelRequest = {
 	/**
 	 * Shipment label
 	 */
-	label: ShippingLabel
+	label?: Partial<ShippingLabel>
 	/**
 	 * Indicates the beginning of the time period in which the shipment can be collected from you
 	 */
-	requestCourierTimeFrom: number
+	requestCourierTimeFrom?: number
 	/**
 	 * Indicates the end of the time period in which the shipment can be collected
 	 */
-	requestCourierTimeTo: number
+	requestCourierTimeTo?: number
 	/**
 	 * Supported modes - calculate, validate, create, calculate_with_block
 	 */
-	mode: string
+	mode?: string
 }
 
 export type CreateLabelResponse = {
@@ -44,15 +44,15 @@ export type CreateLabelsRequest = {
 	/**
 	 * Shipment labels
 	 */
-	labels: ShippingLabel[]
+	labels?: Partial<ShippingLabel[]>
 	/**
 	 * E-mail
 	 */
-	runAsyncAndEmailResultTo: string
+	runAsyncAndEmailResultTo?: string
 	/**
 	 * Supported modes - validate, calculate, create
 	 */
-	mode: string
+	mode?: string
 }
 
 export type CreateLabelsResponse = {
@@ -66,7 +66,7 @@ export type DeleteLabelsRequest = {
 	/**
 	 * Shipment numbers
 	 */
-	shipmentNumbers: string[]
+	shipmentNumbers?: Partial<string[]>
 }
 
 export type DeleteLabelsResponse = {
@@ -80,21 +80,21 @@ export type UpdateLabelRequest = {
 	/**
 	 * Shipment label
 	 */
-	label: ShippingLabel
+	label?: Partial<ShippingLabel>
 	/**
 	 * Indicates the beginning of the time period in which the shipment can be collected from you
 	 */
-	requestCourierTimeFrom: number
+	requestCourierTimeFrom?: number
 	/**
 	 * Indicates the end of the time period in which the shipment can be collected
 	 */
-	requestCourierTimeTo: number
-	destroy: boolean
+	requestCourierTimeTo?: number
+	destroy?: boolean
 	/**
 	 * Additional price payment information for ShipmentEdition
 	 */
-	paymentAdditionPrice: PaymentAdditionPrice
-	paymentInstruction: PaymentInstruction
+	paymentAdditionPrice?: Partial<PaymentAdditionPrice>
+	paymentInstruction?: Partial<PaymentInstruction>
 }
 
 export type UpdateLabelResponse = {
@@ -105,7 +105,7 @@ export type UpdateLabelResponse = {
 }
 
 export type CheckPossibleShipmentEditionsRequest = {
-	shipmentNums: number[]
+	shipmentNums?: Partial<number[]>
 }
 
 export type CheckPossibleShipmentEditionsResponse = {
@@ -113,7 +113,7 @@ export type CheckPossibleShipmentEditionsResponse = {
 }
 
 export type UpdateLabelsRequest = {
-	labels: UpdateLabelRequest[]
+	labels?: Partial<UpdateLabelRequest[]>
 }
 
 export type UpdateLabelsResponse = {
@@ -124,7 +124,7 @@ export type GroupingRequest = {
 	/**
 	 * Номера на товарителници
 	 */
-	labels: number[]
+	labels?: Partial<number[]>
 }
 
 export type GroupingResponse = {
@@ -132,7 +132,7 @@ export type GroupingResponse = {
 }
 
 export type GroupingCancelationRequest = {
-	groupLabel: number
+	groupLabel?: number
 }
 
 export type GroupingCancelationResponse = {
@@ -143,43 +143,43 @@ export type RequestCourierRequest = {
 	/**
 	 * Indicates the beginning of the time the courier can collect (SOAP: YYYY-MM-DDTHH:MM:SS+03:00) (JSON: unix timestamp)
 	 */
-	requestTimeFrom: number
+	requestTimeFrom?: number
 	/**
 	 * Indicates the end of the time the courier can collect (SOAP: YYYY-MM-DDTHH:MM:SS+03:00) (JSON: unix timestamp)
 	 */
-	requestTimeTo: number
+	requestTimeTo?: number
 	/**
-	 * Shipment export type (pack, post_pack, etc.)
+	 * Shipment type (pack, post_pack, etc.)
 	 */
-	shipmentType: ShipmentType
+	shipmentType?: Partial<ShipmentType>
 	/**
 	 * Count of shipments
 	 */
-	shipmentPackCount: number
+	shipmentPackCount?: number
 	/**
 	 * Shipment weight (kg)
 	 */
-	shipmentWeight: number
+	shipmentWeight?: number
 	/**
 	 * Client
 	 */
-	senderClient: ClientProfile
+	senderClient?: Partial<ClientProfile>
 	/**
 	 * Authorized person
 	 */
-	senderAgent: ClientProfile
+	senderAgent?: Partial<ClientProfile>
 	/**
 	 * The address of the sender
 	 */
-	senderAddress: Address
+	senderAddress?: Partial<Address>
 	/**
 	 * Prepared (not yet received) shipment numbers
 	 */
-	attachShipments: string[]
+	attachShipments?: Partial<string[]>
 	/**
 	 * Motorbike stand rental
 	 */
-	pack12: number
+	pack12?: number
 }
 
 export type RequestCourierResponse = {
@@ -197,7 +197,7 @@ export type GetShipmentStatusesRequest = {
 	/**
 	 * Shipment numbers
 	 */
-	shipmentNumbers: string[]
+	shipmentNumbers?: Partial<string[]>
 }
 
 export type GetShipmentStatusesResponse = {
@@ -211,7 +211,7 @@ export type GetRequestCourierStatusRequest = {
 	/**
 	 * Request courier IDs
 	 */
-	requestCourierIds: string[]
+	requestCourierIds?: Partial<string[]>
 }
 
 export type GetRequestCourierStatusResponse = {
@@ -222,13 +222,13 @@ export type GetRequestCourierStatusResponse = {
 }
 
 export type GetMyAWBRequest = {
-	dateFrom: number
-	dateTo: number
-	page: number
+	dateFrom?: number
+	dateTo?: number
+	page?: number
 	/**
 	 * Shipment side - sender / receiver / all
 	 */
-	side: string
+	side?: string
 }
 
 export type GetMyAWBResponse = {
@@ -243,13 +243,13 @@ export type SetITUCodeRequest = {
 	/**
 	 * Shipment number
 	 */
-	awbBarcode: string
+	awbBarcode?: string
 	/**
 	 * Truck registration number
 	 */
-	truckRegNum: string
+	truckRegNum?: string
 	/**
 	 * ITU code
 	 */
-	ITU_code: string
+	ITU_code?: string
 }
