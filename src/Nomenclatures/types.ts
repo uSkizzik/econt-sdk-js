@@ -1,3 +1,4 @@
+import { PartialDeep } from "type-fest"
 import { Address, City, Country, Office, Quarter, Street, WorkingDateTime, WorkingTime } from "@/Nomenclatures"
 import { ShipmentType } from "@/Shipments"
 
@@ -84,7 +85,7 @@ export type ValidateAddressRequest = {
 	/**
 	 * Address (minimum required parameters: city name, street name and street number or quarter and other)
 	 */
-	address?: Partial<Address>
+	address?: PartialDeep<Address>
 }
 
 export type ValidateAddressResponse = {
@@ -111,7 +112,7 @@ export type AddressServiceTimesRequest = {
 	 * The date for which to check servicing
 	 */
 	date?: number
-	shipmentType?: Partial<ShipmentType>
+	shipmentType?: PartialDeep<ShipmentType>
 }
 
 export type AddressServiceTimesResponse = {
@@ -146,11 +147,11 @@ export type GetNearestOfficesRequest = {
 	/**
 	 * Аddress
 	 */
-	address?: Partial<Address>
+	address?: PartialDeep<Address>
 	/**
 	 * Shipment type
 	 */
-	shipmentType?: Partial<ShipmentType>
+	shipmentType?: PartialDeep<ShipmentType>
 }
 
 export type GetNearestOfficesResponse = {

@@ -1,3 +1,4 @@
+import { PartialDeep } from "type-fest"
 import { Address } from "@/Nomenclatures"
 import { CheckPossibleShipmentEditionsResultElement, CreateLabelResultElement, DeleteLabelsResultElement, GetMyAWBResultElement, PaymentAdditionPrice, PaymentInstruction, RequestCourierStatusResultElement, ShipmentStatus, ShipmentStatusResultElement, ShipmentType, ShippingLabel, UpdateLabelsResultElement } from "@/Shipments"
 import { ClientProfile } from "@/Profile"
@@ -6,7 +7,7 @@ export type CreateLabelRequest = {
 	/**
 	 * Shipment label
 	 */
-	label?: Partial<ShippingLabel>
+	label?: PartialDeep<ShippingLabel>
 	/**
 	 * Indicates the beginning of the time period in which the shipment can be collected from you
 	 */
@@ -44,7 +45,7 @@ export type CreateLabelsRequest = {
 	/**
 	 * Shipment labels
 	 */
-	labels?: Partial<ShippingLabel[]>
+	labels?: PartialDeep<ShippingLabel[]>
 	/**
 	 * E-mail
 	 */
@@ -66,7 +67,7 @@ export type DeleteLabelsRequest = {
 	/**
 	 * Shipment numbers
 	 */
-	shipmentNumbers?: Partial<string[]>
+	shipmentNumbers?: string[]
 }
 
 export type DeleteLabelsResponse = {
@@ -80,7 +81,7 @@ export type UpdateLabelRequest = {
 	/**
 	 * Shipment label
 	 */
-	label?: Partial<ShippingLabel>
+	label?: PartialDeep<ShippingLabel>
 	/**
 	 * Indicates the beginning of the time period in which the shipment can be collected from you
 	 */
@@ -93,8 +94,8 @@ export type UpdateLabelRequest = {
 	/**
 	 * Additional price payment information for ShipmentEdition
 	 */
-	paymentAdditionPrice?: Partial<PaymentAdditionPrice>
-	paymentInstruction?: Partial<PaymentInstruction>
+	paymentAdditionPrice?: PartialDeep<PaymentAdditionPrice>
+	paymentInstruction?: PartialDeep<PaymentInstruction>
 }
 
 export type UpdateLabelResponse = {
@@ -105,7 +106,7 @@ export type UpdateLabelResponse = {
 }
 
 export type CheckPossibleShipmentEditionsRequest = {
-	shipmentNums?: Partial<number[]>
+	shipmentNums?: number[]
 }
 
 export type CheckPossibleShipmentEditionsResponse = {
@@ -113,7 +114,7 @@ export type CheckPossibleShipmentEditionsResponse = {
 }
 
 export type UpdateLabelsRequest = {
-	labels?: Partial<UpdateLabelRequest[]>
+	labels?: PartialDeep<UpdateLabelRequest[]>
 }
 
 export type UpdateLabelsResponse = {
@@ -124,7 +125,7 @@ export type GroupingRequest = {
 	/**
 	 * Номера на товарителници
 	 */
-	labels?: Partial<number[]>
+	labels?: number[]
 }
 
 export type GroupingResponse = {
@@ -151,7 +152,7 @@ export type RequestCourierRequest = {
 	/**
 	 * Shipment type (pack, post_pack, etc.)
 	 */
-	shipmentType?: Partial<ShipmentType>
+	shipmentType?: PartialDeep<ShipmentType>
 	/**
 	 * Count of shipments
 	 */
@@ -163,19 +164,19 @@ export type RequestCourierRequest = {
 	/**
 	 * Client
 	 */
-	senderClient?: Partial<ClientProfile>
+	senderClient?: PartialDeep<ClientProfile>
 	/**
 	 * Authorized person
 	 */
-	senderAgent?: Partial<ClientProfile>
+	senderAgent?: PartialDeep<ClientProfile>
 	/**
 	 * The address of the sender
 	 */
-	senderAddress?: Partial<Address>
+	senderAddress?: PartialDeep<Address>
 	/**
 	 * Prepared (not yet received) shipment numbers
 	 */
-	attachShipments?: Partial<string[]>
+	attachShipments?: string[]
 	/**
 	 * Motorbike stand rental
 	 */
@@ -197,7 +198,7 @@ export type GetShipmentStatusesRequest = {
 	/**
 	 * Shipment numbers
 	 */
-	shipmentNumbers?: Partial<string[]>
+	shipmentNumbers?: string[]
 }
 
 export type GetShipmentStatusesResponse = {
@@ -211,7 +212,7 @@ export type GetRequestCourierStatusRequest = {
 	/**
 	 * Request courier IDs
 	 */
-	requestCourierIds?: Partial<string[]>
+	requestCourierIds?: string[]
 }
 
 export type GetRequestCourierStatusResponse = {

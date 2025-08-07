@@ -1,3 +1,4 @@
+import { PartialDeep } from "type-fest"
 import { CDPayOptions, ProfilesResponseElement } from "@/Profile/objects.ts"
 
 export type GetClientProfilesResponse = {
@@ -8,7 +9,7 @@ export type GetClientProfilesResponse = {
 }
 
 export type CreateCDAgreementRequest = {
-	cdPayOptions?: Partial<CDPayOptions>
+	cdPayOptions?: PartialDeep<CDPayOptions>
 }
 
 export type CreateCDAgreementResponse = {

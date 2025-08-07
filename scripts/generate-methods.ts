@@ -111,7 +111,7 @@ function generateObjType(methodName: string, type: "req" | "res", props: MethodP
 
 	props.forEach((p) => {
 		let pType = p.type
-		if (!["string", "number", "boolean"].includes(pType) && type === "req") pType = `Partial<${p.type}>`
+		if (!["string", "number", "boolean"].includes(pType.split("[")[0]) && type === "req") pType = `PartialDeep<${p.type}>`
 
 		if (p.desc) {
 			string += `/**\n`
