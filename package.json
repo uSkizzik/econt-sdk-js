@@ -4,13 +4,19 @@
 	"description": "A JavaScript SDK that aids in using Econt's REST JSON API",
 	"author": "uSkizzik",
 	"license": "MIT",
-	"main": "./dist/src/index.js",
-	"types": "./dist/src/index.d.ts",
-	"files": [
-		"dist/**/*"
-	],
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"scripts": {
-		"build": "tsc --build"
+		"build": "tsup src/index.ts --format esm,cjs --dts",
+		"prepublishOnly": "yarn build"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
@@ -20,7 +26,7 @@
 		"eslint-plugin-unused-imports": "^4.1.4",
 		"node-html-parser": "^7.0.1",
 		"prettier": "^3.6.2",
-		"tsc": "^2.0.4",
+		"tsup": "^8.5.0",
 		"tsx": "^4.20.3",
 		"typescript": "^5.6.2",
 		"typescript-eslint": "^8.39.0",

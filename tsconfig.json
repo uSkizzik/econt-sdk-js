@@ -1,17 +1,16 @@
 {
 	"compilerOptions": {
 		/* Basic Options */
-		"target": "ES5",
-		"module": "commonjs",
+		"target": "ES2017",
+		"module": "ESNext",
 		"lib": ["ESNext"],
 		"useDefineForClassFields": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
-		"composite": true,
-		"incremental": true,
 		"declaration": true,
 
 		/* Bundler mode */
+		"moduleResolution": "node",
 		"allowImportingTsExtensions": true,
 		"isolatedModules": true,
 		"noEmit": true,
@@ -42,6 +41,6 @@
 			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["./src/**/*.ts"],
+	"include": ["src"],
 	"exclude": ["node_modules"]
 }
