@@ -1,11 +1,13 @@
 # Econt SDK JS
 
+![NPM Version](https://img.shields.io/npm/v/econt-sdk-js)
+
 Econt SDK JS is a library that provides you with type-safe functions to access almost the entire Econt JSON API.  
 The library itself is mostly automatically generated using the documentation of the API, with minimal adjustments.
 
 ## Installation
 
-`npm install econt-sdk-js`
+`npm install econt-sdk-js`  
 `yarn add econt-sdk-js`
 
 ## Usage
